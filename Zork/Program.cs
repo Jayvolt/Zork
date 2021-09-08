@@ -1,9 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Zork
 {
-    class Program
+    internal class Program
     {
+        private static string CurrentRoom
+        {
+            get
+            {
+                return Rooms[Location.Row, Location.Column];
+            }
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Zork!");
@@ -11,7 +19,7 @@ namespace Zork
             Commands command = Commands.UNKNOWN;
             while (command != Commands.QUIT)
             {
-                Console.Write("> ");
+                Console.Write($"{CurrentRoom}\n> ");
                 command = ToCommand(Console.ReadLine().Trim());
 
                 string outputString;
@@ -27,7 +35,7 @@ namespace Zork
                     case Commands.SOUTH:
                     case Commands.EAST:
                     case Commands.WEST:
-                        outputString = $"You moved {command}.";
+                        outputString = Move(command) ? $"You moved {command}" : "The way is shut!";
                         break;
 
                     default:
@@ -41,5 +49,51 @@ namespace Zork
         }
 
         private static Commands ToCommand(string commandString) => (Enum.TryParse<Commands>(commandString, true, out Commands result) ? result : Commands.UNKNOWN);
+
+        private static readonly string[,] Rooms = {
+            { "Rocky Trail","South of House","Canyon View" },
+            { "Forest","West of House","Behind House"},
+            { "Dense Woods","North of House","Clearing"}
+        };
+
+        private static readonly List<Commands> Directions = new List<Commands>
+        {
+            Commands.NORTH,
+            Commands.SOUTH,
+            Commands.EAST,
+            Commands.WEST
+        };
+
+        private static bool IsDirection(Commands command) => Directions.Contains(command);
+        private static (int Row, int Column) Location = (1, 1);
+
+        private static bool Move(Commands command)
+        {
+            Assert.IsTrue(IsDirection(command), "Invalid direction.");
+
+            bool isValidMove = false;
+
+            switch (command)
+            {
+                case Commands.NORTH when Location.Row < Rooms.GetLength(0) - 1:
+                    Location.Row--;
+                    isValidMove = true;
+                    break;
+                case Commands.SOUTH when Location.Row > 0;
+                    Location.Row++;
+                    isValidMove = true;
+                    break;
+
+                case Commands.EAST when Location.Column < Rooms.GetLength(1) - 1:
+                    Location.Column++;
+                    isValidMove = true;
+                    break;
+                case Commands.WEST when Location.Column > 0:
+                    Location.Column--;
+                    isValidMove = true;
+                    break;
+            }
+            return isValidMove;
+        }
     }
 }
