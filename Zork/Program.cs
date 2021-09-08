@@ -11,7 +11,7 @@ namespace Zork
             Commands command = Commands.UNKNOWN;
             while (command != Commands.QUIT)
             {
-                Console.WriteLine("> ");
+                Console.Write("> ");
                 command = ToCommand(Console.ReadLine().Trim());
 
                 string outputString;
