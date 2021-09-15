@@ -79,7 +79,7 @@ namespace Zork
                     Location.Row--;
                     isValidMove = true;
                     break;
-                case Commands.SOUTH when Location.Row > 0;
+                case Commands.SOUTH when Location.Row > 0:
                     Location.Row++;
                     isValidMove = true;
                     break;
