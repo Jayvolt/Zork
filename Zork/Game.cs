@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
+﻿using System.IO;
 using Newtonsoft.Json;
 
 namespace Zork
 {
-    class Game
+    public class Game
     {
         public World World { get; }
 
