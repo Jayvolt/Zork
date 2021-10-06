@@ -46,6 +46,7 @@ namespace Zork
         public void AddScore()
         {
             score += 5;
+            AddMoves();
         }
         public void AddMoves()
         {

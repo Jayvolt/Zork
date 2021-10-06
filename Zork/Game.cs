@@ -49,16 +49,17 @@ namespace Zork
                         Directions direction = Enum.Parse<Directions>(command.ToString(), true);
                         if(Player.Move(direction) == false)
                         { 
-                            Console.WriteLine("The way is shut!"); 
+                            Console.WriteLine("The way is shut!");
+                            Player.AddMoves();
                         }
                         break;
                     case Commands.SCORE:
-                        Console.WriteLine($"Your score is {Player.score} in {Player.moves}(s).");
+                        Player.AddMoves();
+                        Console.WriteLine($"Your score is {Player.score} in {Player.moves} move(s).");
                         break;
                     case Commands.REWARD:
                         Player.AddScore();
-                        Player.AddMoves();
-                        Console.WriteLine("1 Score Obtained.");
+                        Console.WriteLine("5 Score Obtained.");
                         break;
 
                     default:

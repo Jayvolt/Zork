@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Zork.World" Collapsed="true">
-    <Position X="1.25" Y="2.75" Width="1.5" />
+  <Class Name="Zork.World">
+    <Position X="2.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAEAAAAAAAAAAAEAAAACAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <HashCode>AAQAAAEAAAAAAAACAAEAAAACAAAAAAAAAAAAAAAAAQA=</HashCode>
       <FileName>World.cs</FileName>
     </TypeIdentifier>
   </Class>
