@@ -5,13 +5,6 @@ using Newtonsoft.Json;
 
 namespace Zork
 {
-    public enum Directions
-    {
-        North,
-        South,
-        East,
-        West
-    }
     public class Room : IEquatable<Room>
     {
         [JsonProperty(Order = 1)]
