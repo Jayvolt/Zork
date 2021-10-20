@@ -28,11 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl = new System.Windows.Forms.TabControl();
+            System.Windows.Forms.TabControl tabControl;
+            System.Windows.Forms.Label itemNameLabel;
+            System.Windows.Forms.Label descriptionLabel;
+            System.Windows.Forms.Label nameLabel;
+            System.Windows.Forms.Label startingLocationLabel;
+            System.Windows.Forms.GroupBox messagesGroup;
+            System.Windows.Forms.Label quitMsgLabel;
+            System.Windows.Forms.Label welcomeMsgLabel;
             this.roomsTab = new System.Windows.Forms.TabPage();
             this.itemsGroup = new System.Windows.Forms.GroupBox();
             this.itemNameTextBox = new System.Windows.Forms.TextBox();
-            this.itemNameLabel = new System.Windows.Forms.Label();
             this.deleteItemButton = new System.Windows.Forms.Button();
             this.addItemButton = new System.Windows.Forms.Button();
             this.itemsList = new System.Windows.Forms.ListBox();
@@ -48,20 +54,14 @@
             this.detailsGroup = new System.Windows.Forms.GroupBox();
             this.descriptionTextBox = new System.Windows.Forms.RichTextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.descriptionLabel = new System.Windows.Forms.Label();
-            this.nameLabel = new System.Windows.Forms.Label();
             this.roomsGroup = new System.Windows.Forms.GroupBox();
-            this.startingLocationLabel = new System.Windows.Forms.Label();
             this.deleteRoomButton = new System.Windows.Forms.Button();
             this.addRoomButton = new System.Windows.Forms.Button();
             this.roomCombo = new System.Windows.Forms.ComboBox();
             this.roomList = new System.Windows.Forms.ListBox();
             this.generalTab = new System.Windows.Forms.TabPage();
-            this.messagesGroup = new System.Windows.Forms.GroupBox();
             this.quitMsgTextBox = new System.Windows.Forms.RichTextBox();
-            this.quitMsgLabel = new System.Windows.Forms.Label();
             this.welcomeMsgTextBox = new System.Windows.Forms.RichTextBox();
-            this.welcomeMsgLabel = new System.Windows.Forms.Label();
             this.FileTab = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,27 +77,36 @@
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.tabControl.SuspendLayout();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            tabControl = new System.Windows.Forms.TabControl();
+            itemNameLabel = new System.Windows.Forms.Label();
+            descriptionLabel = new System.Windows.Forms.Label();
+            nameLabel = new System.Windows.Forms.Label();
+            startingLocationLabel = new System.Windows.Forms.Label();
+            messagesGroup = new System.Windows.Forms.GroupBox();
+            quitMsgLabel = new System.Windows.Forms.Label();
+            welcomeMsgLabel = new System.Windows.Forms.Label();
+            tabControl.SuspendLayout();
             this.roomsTab.SuspendLayout();
             this.itemsGroup.SuspendLayout();
             this.neighborsGroup.SuspendLayout();
             this.detailsGroup.SuspendLayout();
             this.roomsGroup.SuspendLayout();
             this.generalTab.SuspendLayout();
-            this.messagesGroup.SuspendLayout();
+            messagesGroup.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
             // 
-            this.tabControl.Controls.Add(this.roomsTab);
-            this.tabControl.Controls.Add(this.generalTab);
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 24);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(839, 449);
-            this.tabControl.TabIndex = 5;
+            tabControl.Controls.Add(this.roomsTab);
+            tabControl.Controls.Add(this.generalTab);
+            tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            tabControl.Location = new System.Drawing.Point(0, 24);
+            tabControl.Name = "tabControl";
+            tabControl.SelectedIndex = 0;
+            tabControl.Size = new System.Drawing.Size(839, 449);
+            tabControl.TabIndex = 5;
             // 
             // roomsTab
             // 
@@ -116,7 +125,7 @@
             // itemsGroup
             // 
             this.itemsGroup.Controls.Add(this.itemNameTextBox);
-            this.itemsGroup.Controls.Add(this.itemNameLabel);
+            this.itemsGroup.Controls.Add(itemNameLabel);
             this.itemsGroup.Controls.Add(this.deleteItemButton);
             this.itemsGroup.Controls.Add(this.addItemButton);
             this.itemsGroup.Controls.Add(this.itemsList);
@@ -140,14 +149,14 @@
             // 
             // itemNameLabel
             // 
-            this.itemNameLabel.AutoSize = true;
-            this.itemNameLabel.Location = new System.Drawing.Point(5, 46);
-            this.itemNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.itemNameLabel.Name = "itemNameLabel";
-            this.itemNameLabel.Size = new System.Drawing.Size(38, 13);
-            this.itemNameLabel.TabIndex = 5;
-            this.itemNameLabel.Text = "Name:";
-            this.itemNameLabel.Click += new System.EventHandler(this.itemNameLabel_Click);
+            itemNameLabel.AutoSize = true;
+            itemNameLabel.Location = new System.Drawing.Point(5, 46);
+            itemNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            itemNameLabel.Name = "itemNameLabel";
+            itemNameLabel.Size = new System.Drawing.Size(38, 13);
+            itemNameLabel.TabIndex = 5;
+            itemNameLabel.Text = "Name:";
+            itemNameLabel.Click += new System.EventHandler(this.itemNameLabel_Click);
             // 
             // deleteItemButton
             // 
@@ -284,8 +293,8 @@
             // 
             this.detailsGroup.Controls.Add(this.descriptionTextBox);
             this.detailsGroup.Controls.Add(this.nameTextBox);
-            this.detailsGroup.Controls.Add(this.descriptionLabel);
-            this.detailsGroup.Controls.Add(this.nameLabel);
+            this.detailsGroup.Controls.Add(descriptionLabel);
+            this.detailsGroup.Controls.Add(nameLabel);
             this.detailsGroup.Location = new System.Drawing.Point(192, 6);
             this.detailsGroup.Name = "detailsGroup";
             this.detailsGroup.Size = new System.Drawing.Size(320, 193);
@@ -312,25 +321,25 @@
             // 
             // descriptionLabel
             // 
-            this.descriptionLabel.AutoSize = true;
-            this.descriptionLabel.Location = new System.Drawing.Point(6, 53);
-            this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(63, 13);
-            this.descriptionLabel.TabIndex = 1;
-            this.descriptionLabel.Text = "Description:";
+            descriptionLabel.AutoSize = true;
+            descriptionLabel.Location = new System.Drawing.Point(6, 53);
+            descriptionLabel.Name = "descriptionLabel";
+            descriptionLabel.Size = new System.Drawing.Size(63, 13);
+            descriptionLabel.TabIndex = 1;
+            descriptionLabel.Text = "Description:";
             // 
             // nameLabel
             // 
-            this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(31, 19);
-            this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(38, 13);
-            this.nameLabel.TabIndex = 0;
-            this.nameLabel.Text = "Name:";
+            nameLabel.AutoSize = true;
+            nameLabel.Location = new System.Drawing.Point(31, 19);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new System.Drawing.Size(38, 13);
+            nameLabel.TabIndex = 0;
+            nameLabel.Text = "Name:";
             // 
             // roomsGroup
             // 
-            this.roomsGroup.Controls.Add(this.startingLocationLabel);
+            this.roomsGroup.Controls.Add(startingLocationLabel);
             this.roomsGroup.Controls.Add(this.deleteRoomButton);
             this.roomsGroup.Controls.Add(this.addRoomButton);
             this.roomsGroup.Controls.Add(this.roomCombo);
@@ -344,12 +353,12 @@
             // 
             // startingLocationLabel
             // 
-            this.startingLocationLabel.AutoSize = true;
-            this.startingLocationLabel.Location = new System.Drawing.Point(3, 328);
-            this.startingLocationLabel.Name = "startingLocationLabel";
-            this.startingLocationLabel.Size = new System.Drawing.Size(87, 13);
-            this.startingLocationLabel.TabIndex = 3;
-            this.startingLocationLabel.Text = "Starting Location";
+            startingLocationLabel.AutoSize = true;
+            startingLocationLabel.Location = new System.Drawing.Point(3, 328);
+            startingLocationLabel.Name = "startingLocationLabel";
+            startingLocationLabel.Size = new System.Drawing.Size(87, 13);
+            startingLocationLabel.TabIndex = 3;
+            startingLocationLabel.Text = "Starting Location";
             // 
             // deleteRoomButton
             // 
@@ -395,7 +404,7 @@
             // generalTab
             // 
             this.generalTab.BackColor = System.Drawing.Color.Transparent;
-            this.generalTab.Controls.Add(this.messagesGroup);
+            this.generalTab.Controls.Add(messagesGroup);
             this.generalTab.Location = new System.Drawing.Point(4, 22);
             this.generalTab.Name = "generalTab";
             this.generalTab.Padding = new System.Windows.Forms.Padding(3);
@@ -405,16 +414,16 @@
             // 
             // messagesGroup
             // 
-            this.messagesGroup.Controls.Add(this.quitMsgTextBox);
-            this.messagesGroup.Controls.Add(this.quitMsgLabel);
-            this.messagesGroup.Controls.Add(this.welcomeMsgTextBox);
-            this.messagesGroup.Controls.Add(this.welcomeMsgLabel);
-            this.messagesGroup.Location = new System.Drawing.Point(9, 7);
-            this.messagesGroup.Name = "messagesGroup";
-            this.messagesGroup.Size = new System.Drawing.Size(240, 183);
-            this.messagesGroup.TabIndex = 2;
-            this.messagesGroup.TabStop = false;
-            this.messagesGroup.Text = "Messages";
+            messagesGroup.Controls.Add(this.quitMsgTextBox);
+            messagesGroup.Controls.Add(quitMsgLabel);
+            messagesGroup.Controls.Add(this.welcomeMsgTextBox);
+            messagesGroup.Controls.Add(welcomeMsgLabel);
+            messagesGroup.Location = new System.Drawing.Point(9, 7);
+            messagesGroup.Name = "messagesGroup";
+            messagesGroup.Size = new System.Drawing.Size(240, 183);
+            messagesGroup.TabIndex = 2;
+            messagesGroup.TabStop = false;
+            messagesGroup.Text = "Messages";
             // 
             // quitMsgTextBox
             // 
@@ -426,12 +435,12 @@
             // 
             // quitMsgLabel
             // 
-            this.quitMsgLabel.AutoSize = true;
-            this.quitMsgLabel.Location = new System.Drawing.Point(6, 94);
-            this.quitMsgLabel.Name = "quitMsgLabel";
-            this.quitMsgLabel.Size = new System.Drawing.Size(113, 13);
-            this.quitMsgLabel.TabIndex = 4;
-            this.quitMsgLabel.Text = "Game\'s Quit Message:";
+            quitMsgLabel.AutoSize = true;
+            quitMsgLabel.Location = new System.Drawing.Point(6, 94);
+            quitMsgLabel.Name = "quitMsgLabel";
+            quitMsgLabel.Size = new System.Drawing.Size(113, 13);
+            quitMsgLabel.TabIndex = 4;
+            quitMsgLabel.Text = "Game\'s Quit Message:";
             // 
             // welcomeMsgTextBox
             // 
@@ -443,12 +452,12 @@
             // 
             // welcomeMsgLabel
             // 
-            this.welcomeMsgLabel.AutoSize = true;
-            this.welcomeMsgLabel.Location = new System.Drawing.Point(6, 16);
-            this.welcomeMsgLabel.Name = "welcomeMsgLabel";
-            this.welcomeMsgLabel.Size = new System.Drawing.Size(139, 13);
-            this.welcomeMsgLabel.TabIndex = 2;
-            this.welcomeMsgLabel.Text = "Game\'s Welcome Message:";
+            welcomeMsgLabel.AutoSize = true;
+            welcomeMsgLabel.Location = new System.Drawing.Point(6, 16);
+            welcomeMsgLabel.Name = "welcomeMsgLabel";
+            welcomeMsgLabel.Size = new System.Drawing.Size(139, 13);
+            welcomeMsgLabel.TabIndex = 2;
+            welcomeMsgLabel.Text = "Game\'s Welcome Message:";
             // 
             // FileTab
             // 
@@ -466,31 +475,38 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.newToolStripMenuItem.Text = "New";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.saveAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -510,42 +526,48 @@
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.undoToolStripMenuItem.Text = "Undo";
             // 
             // redoToolStripMenuItem
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.redoToolStripMenuItem.Text = "Redo";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(104, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // cutToolStripMenuItem1
             // 
             this.cutToolStripMenuItem1.Name = "cutToolStripMenuItem1";
-            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+            this.cutToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.cutToolStripMenuItem1.Text = "Cut";
             // 
             // copyToolStripMenuItem1
             // 
             this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
-            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+            this.copyToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.copyToolStripMenuItem1.Text = "Copy";
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
             // menuStrip2
@@ -561,16 +583,22 @@
             this.menuStrip2.Text = "menuStrip2";
             this.menuStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip2_ItemClicked);
             // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "JSON Files | *.json";
+            // 
             // Zork_Builder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(839, 473);
-            this.Controls.Add(this.tabControl);
+            this.Controls.Add(tabControl);
             this.Controls.Add(this.menuStrip2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Zork_Builder";
             this.Text = "Zork Editor";
-            this.tabControl.ResumeLayout(false);
+            tabControl.ResumeLayout(false);
             this.roomsTab.ResumeLayout(false);
             this.itemsGroup.ResumeLayout(false);
             this.itemsGroup.PerformLayout();
@@ -581,8 +609,8 @@
             this.roomsGroup.ResumeLayout(false);
             this.roomsGroup.PerformLayout();
             this.generalTab.ResumeLayout(false);
-            this.messagesGroup.ResumeLayout(false);
-            this.messagesGroup.PerformLayout();
+            messagesGroup.ResumeLayout(false);
+            messagesGroup.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
@@ -591,7 +619,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage roomsTab;
         private System.Windows.Forms.GroupBox neighborsGroup;
         private System.Windows.Forms.ComboBox westComboBox;
@@ -605,10 +632,7 @@
         private System.Windows.Forms.GroupBox detailsGroup;
         private System.Windows.Forms.RichTextBox descriptionTextBox;
         private System.Windows.Forms.TextBox nameTextBox;
-        private System.Windows.Forms.Label descriptionLabel;
-        private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.GroupBox roomsGroup;
-        private System.Windows.Forms.Label startingLocationLabel;
         private System.Windows.Forms.Button deleteRoomButton;
         private System.Windows.Forms.Button addRoomButton;
         private System.Windows.Forms.ComboBox roomCombo;
@@ -630,16 +654,13 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.TabPage generalTab;
-        private System.Windows.Forms.GroupBox messagesGroup;
         private System.Windows.Forms.RichTextBox quitMsgTextBox;
-        private System.Windows.Forms.Label quitMsgLabel;
         private System.Windows.Forms.RichTextBox welcomeMsgTextBox;
-        private System.Windows.Forms.Label welcomeMsgLabel;
         private System.Windows.Forms.ListBox itemsList;
         private System.Windows.Forms.Button addItemButton;
         private System.Windows.Forms.Button deleteItemButton;
         private System.Windows.Forms.TextBox itemNameTextBox;
-        private System.Windows.Forms.Label itemNameLabel;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
 

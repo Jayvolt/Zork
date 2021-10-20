@@ -117,5 +117,13 @@ namespace Zork.Builder
         {
 
         }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
     }
 }
