@@ -6,6 +6,7 @@ namespace Zork
 {
     public class Game
     {
+        public static Game Instance { get; private set; }
         public World World { get; private set; }
         [JsonIgnore]
         public Player Player { get; private set; }
@@ -68,10 +69,25 @@ namespace Zork
                 }
             }
         }
-    
-        public static Game Load(string filename)
+
+
+        public static void StartFromFile(string gamefilename)
         {
-            Game game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(filename));
+            if (!File.Exists(gamefilename))
+            {
+                throw new FileNotFoundException("Expected file.", gamefilename);
+            }
+            Start(File.ReadAllText(gamefilename));
+        }
+        public static void Start(string gameJsonString)
+        {
+            Console.WriteLine("Welcome to Zork!");
+            Instance = Load(gameJsonString);
+        }
+
+        public static Game Load(string jsonString)
+        {
+            Game game = JsonConvert.DeserializeObject<Game>(jsonString);
             game.Player = game.World.SpawnPlayer();
 
             return game;
