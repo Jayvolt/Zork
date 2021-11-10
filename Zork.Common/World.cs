@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-
+using Zork.Common;
 
 namespace Zork
 {

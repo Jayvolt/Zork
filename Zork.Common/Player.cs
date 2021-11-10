@@ -1,6 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
-namespace Zork
+namespace Zork.Common
 {
     public class Player
     {
@@ -8,6 +9,8 @@ namespace Zork
         //When type score - outputs score and moves "your score is 5 in 10 move(s)"
         //Write a command that counts moves and displays it (except unrecognized command)
         public World World { get; }
+
+        public EventHandler<Room> LocationChanged;
 
         [JsonIgnore]
         public Room Location { get; private set; }

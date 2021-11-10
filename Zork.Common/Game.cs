@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Newtonsoft.Json;
+using Zork.Common;
 
 namespace Zork
 {
@@ -12,7 +13,8 @@ namespace Zork
         public Player Player { get; private set; }
         [JsonIgnore]
         private bool IsRunning { get; set; }
-
+        [JsonIgnore]
+        public IOutputService Output { get; private set; }
         public Game(World world, Player player)
         {
             World = world;
@@ -25,13 +27,13 @@ namespace Zork
             Room previousRoom = null;
             while (IsRunning)
             {
-                Console.WriteLine(Player.Location);
+                Output.WriteLine(Player.Location);
                 if (previousRoom != Player.Location)
                 {
-                    Console.WriteLine(Player.Location.Description);
+                    Output.WriteLine(Player.Location.Description);
                     previousRoom = Player.Location;
                 }
-                Console.Write(">");
+                Output.Write(">");
                 Commands command = ToCommand(Console.ReadLine().Trim());
 
                 switch (command)
@@ -41,7 +43,7 @@ namespace Zork
                         break;
                     case Commands.LOOK:
                         Player.AddMoves();
-                        Console.WriteLine(Player.Location.Description);
+                        Output.WriteLine(Player.Location.Description);
                         break;
                     case Commands.NORTH:
                     case Commands.SOUTH:
@@ -50,39 +52,39 @@ namespace Zork
                         Directions direction = (Directions)command;
                         if(Player.Move(direction) == false)
                         { 
-                            Console.WriteLine("The way is shut!");
+                            Output.WriteLine("The way is shut!");
                             Player.AddMoves();
                         }
                         break;
                     case Commands.SCORE:
                         Player.AddMoves();
-                        Console.WriteLine($"Your score is {Player.score} in {Player.moves} move(s).");
+                        Output.WriteLine($"Your score is {Player.score} in {Player.moves} move(s).");
                         break;
                     case Commands.REWARD:
                         Player.AddScore();
-                        Console.WriteLine("5 Score Obtained.");
+                        Output.WriteLine("5 Score Obtained.");
                         break;
 
                     default:
-                        Console.WriteLine("Unknown command.");
+                        Output.WriteLine("Unknown command.");
                         break;
                 }
             }
         }
 
 
-        public static void StartFromFile(string gamefilename)
+        public static void StartFromFile(string gamefilename, IOutputService output)
         {
             if (!File.Exists(gamefilename))
             {
                 throw new FileNotFoundException("Expected file.", gamefilename);
             }
-            Start(File.ReadAllText(gamefilename));
+            Start(File.ReadAllText(gamefilename), output);
         }
-        public static void Start(string gameJsonString)
+        public static void Start(string gameJsonString, IOutputService output)
         {
-            Console.WriteLine("Welcome to Zork!");
             Instance = Load(gameJsonString);
+            Instance.Output = output;
         }
 
         public static Game Load(string jsonString)

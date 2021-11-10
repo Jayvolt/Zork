@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
 
 namespace Zork
 {
@@ -13,7 +11,9 @@ namespace Zork
             const string defaultGameFilename = "Zork.json";
             string gameFilename = (args.Length > 0 ? args[(int)CommandLineArguments.GameFilename] : defaultGameFilename);
             
-            Game.StartFromFile(gameFilename);
+            Console.WriteLine("Welcome to Zork!");
+            ConsoleOutputService output = new ConsoleOutputService();
+            Game.StartFromFile(gameFilename, output);
             Console.WriteLine("Thanks for playing!");
         }
 
