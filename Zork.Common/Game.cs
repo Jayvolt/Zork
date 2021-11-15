@@ -8,6 +8,7 @@ namespace Zork
     public class Game
     {
         public static Game Instance { get; private set; }
+        public string WelcomeMessage { get; set; }
         public World World { get; private set; }
         [JsonIgnore]
         public Player Player { get; private set; }
@@ -85,8 +86,13 @@ namespace Zork
         {
             Instance = Load(gameJsonString);
             Instance.Output = output;
+            Instance.DisplayWelcomeMessage();
         }
 
+        private void DisplayWelcomeMessage()
+        {
+            Output.WriteLine(WelcomeMessage);
+        }
         public static Game Load(string jsonString)
         {
             Game game = JsonConvert.DeserializeObject<Game>(jsonString);
