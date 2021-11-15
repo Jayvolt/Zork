@@ -1,9 +1,19 @@
+using System;
 using UnityEngine;
 using Zork;
 
-public class UnityOutputService : MonoBehaviour
+public class UnityOutputService : MonoBehaviour, IOutputService
 {
-    // Start is called before the first frame update
+    public void Clear() => throw new NotImplementedException();
+
+    public void Write(string value) => throw new NotImplementedException();
+
+    public void Write(object value) => throw new NotImplementedException();
+
+    public void WriteLine(string value) => throw new NotImplementedException();
+
+    public void WriteLine(object value) => throw new NotImplementedException();
+
     void Start()
     {
         
