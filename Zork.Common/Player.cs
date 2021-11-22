@@ -5,12 +5,11 @@ namespace Zork.Common
 {
     public class Player
     {
-        //Write a command named reward that ups the player's score
-        //When type score - outputs score and moves "your score is 5 in 10 move(s)"
-        //Write a command that counts moves and displays it (except unrecognized command)
         public World World { get; }
 
         public EventHandler<Room> LocationChanged;
+        public EventHandler<int> AddedMove;
+        public EventHandler<int> AddedScore;
 
         [JsonIgnore]
         public Room Location { get; private set; }
@@ -42,6 +41,7 @@ namespace Zork.Common
             {
                 AddMoves();
                 Location = destination;
+                LocationChanged?.Invoke(this, destination);
             }
             return isValidMove;
         }
@@ -49,11 +49,14 @@ namespace Zork.Common
         public void AddScore()
         {
             score += 5;
+            AddedScore?.Invoke(this, score);
             AddMoves();
         }
         public void AddMoves()
         {
             moves++;
+            AddedMove?.Invoke(this, moves);
         }
+
     }
 }
