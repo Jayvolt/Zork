@@ -13,6 +13,7 @@ public class UnityOutputService : MonoBehaviour, IOutputService
 
     public void WriteLine(string value)
     {
+
         mainOutputText = Instantiate(mainOutputText, contentFrame.transform);
         mainOutputText.text = value;
     }

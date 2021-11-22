@@ -30,7 +30,19 @@ public class GameManager : MonoBehaviour
         Game.Instance.Player.AddedMove += MoveAdded;
         Game.Instance.Player.AddedScore += ScoreAdded;
     }
+    private void Update()
+    {
+        if (Game.Instance.IsRunning == false)
+        {
+#if UNITY_EDITOR
 
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+
+        }
+    }
     private void MoveAdded(object sender, int movesCount)
     {
         movesText.text = $"Moves: {movesCount}";
